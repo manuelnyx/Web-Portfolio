@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth bg-slate-900 text-slate-100 selection:bg-rose-600/30 selection:text-rose-300">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Emmanuel Abet Rossi Paays</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Web Portfolio Emmanuel Abet Rossi Paays - S1 Informatika. The Analytical Creative.">
+    <meta name="author" content="Emmanuel Abet Rossi Paays">
+
+    <!-- Favicon -->
+    <link id="dynamic-favicon" rel="icon" type="image/png" href="logo.png">
+
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS Play CDN untuk render otomatis di browser offline/online -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Hubungan File Terpisah style.css -->
+    <link href="style.css" rel="stylesheet">
+    <!-- Hubungan File Terpisah script.js -->
+    <script src="script.js" defer></script>
+</head>
+
+<body class="font-sans antialiased overflow-x-hidden relative bg-slate-900">
+
+    <!-- Efek Interaktif Latar Belakang Neural Canvas (Dikelola oleh script.js) -->
+    <canvas id="neuralCanvas" class="fixed inset-0 w-full h-full pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- BACKGROUND DECORATIONS -->
+    <div
+        class="fixed top-1/4 left-1/3 w-80 h-80 rounded-full bg-rose-600/5 pointer-events-none filter blur-[100px] z-0">
+    </div>
+    <div
+        class="fixed bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-red-700/5 pointer-events-none filter blur-[100px] z-0">
+    </div>
+
+    <!-- HEADER / NAVBAR -->
+    <header class="sticky top-0 z-50 w-full bg-slate-900/80 backdrop-blur-md border-b border-slate-800/60">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 group">
+                <img src="logo.png" alt="Logo"
+                    class="w-9 h-9 rounded-lg object-cover transition-transform duration-300 group-hover:scale-105 border border-slate-700/50">
+                <span
+                    class="font-outfit font-semibold text-base tracking-wider text-slate-200 group-hover:text-rose-500 transition-colors">MANUEL</span>
+            </a>
+
+            <!-- Desktop Navigation Menu (Link Multimedia Dihapus) -->
+            <nav class="hidden md:flex items-center gap-8 font-outfit text-sm font-medium tracking-wide">
+                <a href="#proyek-utama" class="text-slate-400 hover:text-rose-500 transition-colors">Projects</a>
+                <a href="#about-skills" class="text-slate-400 hover:text-rose-500 transition-colors">Contact</a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=emmanuelabetrossipaays@gmail.com"
+                    class="px-4 py-2 rounded-full border border-rose-600/30 text-rose-500 bg-rose-600/5 hover:bg-rose-600/10 hover:border-rose-500 hover:text-slate-100 transition-all font-mono text-xs">Direct
+                    Email</a>
+            </nav>
+
+            <!-- Toggle Menu Mobile Button -->
+            <button id="menuBtn"
+                class="md:hidden flex flex-col justify-between w-6 h-5 text-slate-300 focus:outline-none"
+                aria-label="Buka Menu">
+                <span class="w-full h-0.5 bg-slate-300 rounded transition-transform origin-first"></span>
+                <span class="w-full h-0.5 bg-slate-300 rounded transition-opacity"></span>
+                <span class="w-full h-0.5 bg-slate-300 rounded transition-transform origin-last"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Panel (Link Multimedia Dihapus) -->
+        <div id="mobileMenu"
+            class="hidden md:hidden absolute left-0 w-full bg-slate-900/95 border-b border-slate-800 px-6 py-6 transition-all duration-300">
+            <nav class="flex flex-col gap-4 font-outfit text-base">
+                <a href="#proyek-utama" class="text-slate-300 hover:text-rose-500 transition-colors">Projects</a>
+                <a href="#about-skills" class="text-slate-300 hover:text-rose-500 transition-colors">Contact</a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=emmanuelabetrossipaays@gmail.com"
+                    class="text-rose-500 hover:text-slate-100 border border-rose-600/20 text-center py-2 rounded-lg bg-rose-600/5 transition-all mt-2">Direct
+                    Email</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-7xl mx-auto px-6 relative z-10">
+
+        <!-- 1. HERO SECTION (Layout Dua Kolom: Info Kiri + Kartu Profil Kanan) -->
+        <section class="min-h-[calc(100vh-80px)] flex flex-col justify-center items-center py-12 md:py-20 relative">
+            <div
+                class="max-w-5xl mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-12 relative z-10 w-full">
+
+                <!-- Kolom Kiri: Informasi Utama -->
+                <div class="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
+
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-600/10 border border-rose-600/20 text-rose-500 font-outfit text-xs font-semibold uppercase tracking-widest">
+                        <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span> S1 Informatika Graduate
+                    </div>
+
+                    <h1
+                        class="text-4xl md:text-5xl lg:text-6xl font-outfit font-black leading-tight tracking-tight text-white max-w-3xl">
+                        Halo, saya <span
+                            class="bg-gradient-to-r from-rose-500 to-red-600 bg-clip-text text-transparent">Emmanuel
+                            Abet
+                            Rossi Paays</span>.
+                    </h1>
+
+                    <!-- (Hero description removed as requested) -->
+
+                    <!-- Status Highlight Card -->
+                    <div
+                        class="grid grid-cols-2 gap-6 sm:gap-8 p-5 rounded-xl bg-slate-800/40 border border-slate-700/30 w-full max-w-lg justify-items-center lg:justify-items-start">
+                        <div>
+                            <span class="font-mono text-xl md:text-2xl font-bold text-rose-500">3.5 Tahun</span>
+                            <p class="text-[10px] font-mono uppercase text-slate-500 mt-1">Masa Studi</p>
+                        </div>
+                        <div>
+                            <span class="font-mono text-xl md:text-2xl font-bold text-red-600">3.73 IPK</span>
+                            <p class="text-[10px] font-mono uppercase text-slate-500 mt-1">Predikat Kelulusan</p>
+                        </div>
+                    </div>
+
+                    <!-- Tombol Aksi -->
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#proyek-utama"
+                            class="px-8 py-4 rounded-lg bg-rose-600 text-slate-950 font-outfit font-bold tracking-wide hover:bg-rose-500 hover:shadow-[0_0_20px_rgba(225,29,72,0.3)] transition-all duration-350 active:scale-95 text-center">
+                            Lihat Proyek
+                        </a>
+                        <a href="CV_Emmanuel_Abet_Rossi_Paays.pdf" download
+                            class="px-8 py-4 rounded-lg border border-slate-700 hover:border-rose-600 text-slate-300 hover:text-rose-500 bg-slate-800/20 hover:shadow-[0_0_15px_rgba(225,29,72,0.1)] transition-all duration-350 active:scale-95 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-download"></i> Unduh CV
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- Kolom Kanan: Kartu Profil Minimalis -->
+                <div class="flex-shrink-0 w-full max-w-xs">
+                    <div
+                        class="p-6 rounded-2xl bg-slate-800/40 border border-slate-700/30 backdrop-blur-sm text-center space-y-5">
+                        <div class="relative mx-auto w-48 h-48">
+                            <img src="profile.jpg" alt="Emmanuel Abet Rossi Paays"
+                                class="w-48 h-48 rounded-full object-cover border-2 border-rose-600/30 mx-auto">
+                        </div>
+                        <div class="space-y-1">
+                            <h2 class="text-lg font-outfit font-bold text-white">Emmanuel Abet Rossi Paays</h2>
+                            <p class="text-xs font-mono text-slate-400">S1 Informatika &bull; IPK 3.73</p>
+                        </div>
+                        <div class="flex justify-center gap-4 pt-1">
+                            <a href="https://www.linkedin.com/in/emmanuel-abet-rossi-paays" target="_blank"
+                                rel="noopener noreferrer"
+                                class="w-9 h-9 rounded-lg bg-slate-700/40 border border-slate-600/30 flex items-center justify-center text-slate-400 hover:text-rose-500 hover:border-rose-600/40 transition-colors">
+                                <i class="fa-brands fa-linkedin text-sm"></i>
+                            </a>
+                            <a href="https://github.com/manuelnyx" target="_blank" rel="noopener noreferrer"
+                                class="w-9 h-9 rounded-lg bg-slate-700/40 border border-slate-600/30 flex items-center justify-center text-slate-400 hover:text-rose-500 hover:border-rose-600/40 transition-colors">
+                                <i class="fa-brands fa-github text-sm"></i>
+                            </a>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=emmanuelabetrossipaays@gmail.com"
+                                class="w-9 h-9 rounded-lg bg-slate-700/40 border border-slate-600/30 flex items-center justify-center text-slate-400 hover:text-rose-500 hover:border-rose-600/40 transition-colors">
+                                <i class="fa-solid fa-envelope text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 2. PROYEK UTAMA SECTION (Preview Publikasi Jurnal Fokus Tanpa Label Tag Tek) -->
+        <section id="proyek-utama" class="py-20 md:py-28 relative border-t border-slate-850 scroll-mt-20">
+            <div class="flex flex-col space-y-3 mb-12">
+                <span
+                    class="inline-flex items-center gap-1.5 text-rose-500 font-mono text-xs font-semibold uppercase tracking-wider">
+                    <i class="fa-solid fa-laptop-code text-[10px]"></i> Featured Project
+                </span>
+                <h2 class="text-3xl font-outfit font-black text-white">AI-Powered Cafe Recommendation</h2>
+                <div class="h-1 w-16 bg-rose-500 rounded-full"></div>
+            </div>
+
+            <!-- New AI Cafe Maps Card -->
+            <div
+                class="w-full p-6 md:p-8 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all duration-300 relative overflow-hidden group mb-12">
+                <div
+                    class="absolute top-0 right-0 w-80 h-80 bg-rose-600/5 rounded-full filter blur-[80px] pointer-events-none">
+                </div>
+
+                <div class="space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-4">
+                        <span
+                            class="inline-flex items-center gap-2 px-3 py-1 rounded bg-emerald-600/10 border border-emerald-600/20 text-emerald-400 text-xs font-mono font-medium">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Live on Vercel
+                        </span>
+                        <span
+                            class="font-mono text-xs text-slate-500 bg-slate-800 px-2 py-0.5 rounded border border-slate-750">Fullstack
+                            AI App</span>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h3 class="text-xl md:text-2xl font-outfit font-bold text-white leading-tight">
+                            AI Smart Café Maps: Jakarta Selatan
+                        </h3>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-4xl">
+                            A high-accuracy, AI-driven cafe recommendation application leveraging FastAPI, Leaflet.js,
+                            and the TOPSIS
+                            (Technique for Order of Preference by Similarity to Ideal Solution) algorithm. Designed to
+                            help users filter
+                            and locate premium cafes in South Jakarta based on multiple criteria including budget,
+                            ratings, and Wi-Fi quality.
+                        </p>
+                    </div>
+
+                    <div
+                        class="p-4 rounded-xl bg-slate-950 border border-slate-800 font-sans text-xs text-slate-300 leading-relaxed space-y-2">
+                        <span class="block text-[10px] text-slate-550 font-mono tracking-wider">// TECH STACK &
+                            ARCHITECTURE:</span>
+                        <p>
+                            Built with a Python (FastAPI) backend integrated with real-world geospatial datasets
+                            extracted from Google Maps.
+                            The frontend utilizes responsive HTML/JS and interactive Leaflet map overlays with reverse
+                            geocoding capabilities.
+                        </p>
+                    </div>
+
+                    <div class="pt-2">
+                        <a href="https://ai-recommendation-for-jak-sel-coffe.vercel.app/" target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 px-5 py-2.5 border border-rose-600/30 text-rose-500 bg-rose-600/5 hover:bg-rose-600/10 rounded-lg hover:border-rose-500 hover:text-white transition-all font-mono text-xs w-fit">
+                            Visit Live App <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jurnal Ilmiah Project -->
+            <div class="flex flex-col space-y-3 mb-12">
+                <span
+                    class="inline-flex items-center gap-1.5 text-rose-500 font-mono text-xs font-semibold uppercase tracking-wider">
+                    <i class="fa-solid fa-file-lines text-[10px]"></i> Publikasi Ilmiah Nasional
+                </span>
+                <h2 class="text-3xl font-outfit font-black text-white">Preview Jurnal Ilmiah</h2>
+                <div class="h-1 w-16 bg-rose-500 rounded-full"></div>
+            </div>
+
+            <!-- Main Project Sleek Card -->
+            <div
+                class="w-full p-6 md:p-8 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all duration-300 relative overflow-hidden group">
+                <!-- Decoration light reflection -->
+                <div
+                    class="absolute top-0 right-0 w-80 h-80 bg-rose-600/5 rounded-full filter blur-[80px] pointer-events-none">
+                </div>
+
+                <div class="space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-4">
+                        <!-- Badge SINTA -->
+                        <span
+                            class="inline-flex items-center gap-2 px-3 py-1 rounded bg-rose-600/10 border border-rose-600/20 text-rose-400 text-xs font-mono font-medium">
+                            <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span> Published in SINTA Accredited
+                            Journal
+                        </span>
+                        <span
+                            class="font-mono text-xs text-slate-500 bg-slate-800 px-2 py-0.5 rounded border border-slate-750">Jurnal
+                            Nasional Terindeks</span>
+                    </div>
+
+                    <!-- Titles -->
+                    <div class="space-y-3">
+                        <h3 class="text-xl md:text-2xl font-outfit font-bold text-white leading-tight">
+                            MCDM-BASED FIRE RISK MAPPING WITH GEOSPATIAL VISUALIZATION AND BLOCKCHAIN
+                        </h3>
+
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-4xl">
+                            Membuat visualisasi komparatif spasial tingkat kerawanan kebakaran hutan dengan menerapkan
+                            integrasi metode pengambilan keputusan multi-kriteria (MCDM). Riset ini meningkatkan
+                            ketepatan klasifikasi titik panas (hotspot) sebelum diunggah ke jaringan blockchain untuk
+                            menjaga transparansi dan integritas data sensor lingkungan.
+                        </p>
+                    </div>
+
+                    <!-- Ringkasan Kontribusi Riset Jurnal -->
+                    <div
+                        class="p-4 rounded-xl bg-slate-950 border border-slate-800 font-sans text-xs text-slate-300 leading-relaxed space-y-2">
+                        <span class="block text-[10px] text-slate-550 font-mono tracking-wider">// RINGKASAN ABSTRAK &
+                            KONTRIBUSI RISET:</span>
+                        <p>
+                            Riset publikasi ini mengkaji penerapan metode Multi-Criteria Decision Making (MCDM) untuk
+                            memetakan tingkat kerawanan kebakaran hutan secara geospasial dengan memanfaatkan integrasi
+                            teknologi blockchain. Hasil pengujian menunjukkan peningkatan keandalan data parameter
+                            lingkungan yang terekam dan akurasi tinggi dalam pemodelan visualisasi area rawan kebakaran
+                            secara real-time, memberikan rujukan tepercaya bagi otoritas dalam mitigasi bencana.
+                        </p>
+                    </div>
+
+                    <!-- Tombol Jurnal DOI Resmi -->
+                    <div class="pt-2">
+                        <a href="https://doi.org/10.33395/sinkron.v9i4.15436" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 px-5 py-2.5 border border-rose-600/30 text-rose-500 bg-rose-600/5 hover:bg-rose-600/10 rounded-lg hover:border-rose-500 hover:text-white transition-all font-mono text-xs w-fit">
+                            Baca Jurnal Ilmiah (SINTA) <i
+                                class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. KONTAK SECTION -->
+        <section id="about-skills" class="py-20 md:py-28 relative border-t border-slate-850 scroll-mt-20">
+            <div class="max-w-2xl mx-auto">
+                <!-- Contact Box & Links -->
+                <div class="space-y-6">
+                    <div class="flex flex-col space-y-3">
+                        <span
+                            class="inline-flex items-center gap-1.5 text-red-600 font-mono text-xs font-semibold uppercase tracking-wider">
+                            <i class="fa-solid fa-paper-plane text-[10px]"></i> Let's Connect
+                        </span>
+                        <h2 class="text-3xl font-outfit font-black text-white">Contact Me</h2>
+                        <div class="h-1 w-16 bg-red-600 rounded-full"></div>
+                    </div>
+
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Feel free to reach out to me through the channels below for further discussion or collaboration.
+                    </p>
+
+                    <!-- Dynamic mailto widget -->
+                    <div class="space-y-4">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=emmanuelabetrossipaays@gmail.com"
+                            class="flex items-center gap-4 p-4 rounded-xl bg-slate-950 border border-slate-805 hover:border-rose-600 hover:bg-rose-600/5 group transition-colors duration-300">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-rose-600/10 border border-rose-600/20 flex items-center justify-center text-rose-500 group-hover:bg-rose-500 group-hover:text-slate-905 transition-colors">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="overflow-hidden">
+                                <p class="text-[9px] text-slate-500 font-mono tracking-widest">EMAIL ADDRESS</p>
+                                <span
+                                    class="text-xs md:text-sm font-mono text-slate-300 group-hover:text-white truncate block">emmanuelabetrossipaays@gmail.com</span>
+                            </div>
+                        </a>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <!-- LinkedIN -->
+                            <a href="https://www.linkedin.com/in/emmanuel-abet-rossi-paays" target="_blank"
+                                rel="noopener noreferrer"
+                                class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-950 border border-slate-805 hover:border-red-600 transition-colors duration-300 text-slate-300 hover:text-white text-xs font-mono">
+                                <i class="fa-brands fa-linkedin text-red-600 text-base"></i> LinkedIn
+                            </a>
+                            <!-- GitHub -->
+                            <a href="https://github.com/manuelnyx" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-950 border border-slate-805 hover:border-red-600 transition-colors duration-300 text-slate-300 hover:text-white text-xs font-mono">
+                                <i class="fa-brands fa-github text-slate-400 text-base"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER (Link Multimedia Dihapus) -->
+    <footer class="border-t border-slate-850/60 bg-slate-900/40 relative z-10 mt-12">
+        <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
+
+            <div class="flex items-center gap-2">
+                <img src="logo.png" alt="Logo" class="w-8 h-8 rounded object-cover border border-slate-700/50">
+                <span class="text-xs font-mono text-red-600">&copy; <span id="currentYear">2026</span> Emmanuel Abet
+                    Rossi Paays. All rights reserved.</span>
+            </div>
+
+            <div class="flex items-center gap-5 text-sm">
+                <!-- Academic info removed as requested -->
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+
+</html>
